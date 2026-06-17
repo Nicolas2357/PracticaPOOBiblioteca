@@ -52,6 +52,30 @@ namespace PracticaPOOBiblioteca
             _catalogo.Add(libro);
             Console.WriteLine($"  + Libro agregado: \"{libro.Titulo}\"");
         }
+        public List<Libro> BuscarLibro(string titulo)
+        {
+            return _catalogo
+                .Where(l => l.Titulo.ToLower()
+                .Contains(titulo.ToLower()))
+                .ToList();
+        }
+
+        // Buscar por título y autor
+        public List<Libro> BuscarLibro(string titulo, string autor)
+        {
+            return _catalogo
+                .Where(l =>
+                    l.Titulo.ToLower().Contains(titulo.ToLower()) &&
+                    l.Autor.ToLower().Contains(autor.ToLower()))
+                .ToList();
+        }
+
+        // Buscar por ISBN exacto
+        public Libro BuscarLibro(string isbn, bool buscarPorISBN)
+        {
+            return _catalogo
+                .FirstOrDefault(l => l.ISBN == isbn);
+        }
 
         public List<Libro> BuscarPorTitulo(string texto) =>
             _catalogo.Where(l => l.Titulo.ToLower().Contains(texto.ToLower())).ToList();

@@ -11,7 +11,7 @@ namespace PracticaPOOBiblioteca
         // ── Campos privados ────────────────────────────────────────────────
         private string _titulo;
         private string _autor;
-        private int _anio;
+        private int _año;
         private bool _disponible;
         private string _isbn;
         private string _genero;
@@ -21,7 +21,7 @@ namespace PracticaPOOBiblioteca
         // ── Propiedades ────────────────────────────────────────────────────
         public string Titulo => _titulo;
         public string Autor => _autor;
-        public int Anio => _anio;
+        public int Anio => _año;
         public bool Disponible => _copiasPrestadas < _ejemplares;
         public string ISBN => _isbn;
         public string Genero => _genero;
@@ -29,11 +29,11 @@ namespace PracticaPOOBiblioteca
         public int CopiasDisponibles => _ejemplares - _copiasPrestadas;
 
         // ── Constructor 1: básico ──────────────────────────────────────────
-        public Libro(string titulo, string autor, int anio)
+        public Libro(string titulo, string autor, int año)
         {
             _titulo = titulo;
             _autor = autor;
-            _anio = anio;
+            _año = año;
             _isbn = GenerarISBN();
             _genero = "Sin clasificar";
             _ejemplares = 1;
@@ -48,7 +48,7 @@ namespace PracticaPOOBiblioteca
         {
             _titulo = titulo;
             _autor = autor;
-            _anio = anio;
+            _año = anio;
             _isbn = isbn;
             _genero = genero;
             _ejemplares = ejemplares > 0 ? ejemplares : 1;
@@ -62,7 +62,7 @@ namespace PracticaPOOBiblioteca
         {
             _titulo = original._titulo;
             _autor = original._autor;
-            _anio = original._anio;
+            _año = original._año;
             _isbn = original._isbn;
             _genero = original._genero;
             _ejemplares = original._ejemplares + ejemplaresExtra;
@@ -103,7 +103,7 @@ namespace PracticaPOOBiblioteca
             Console.WriteLine("┌─────────────────────────────────────────┐");
             Console.WriteLine($"  Título   : {_titulo}");
             Console.WriteLine($"  Autor    : {_autor}");
-            Console.WriteLine($"  Año      : {_anio}");
+            Console.WriteLine($"  Año      : {_año}");
             Console.WriteLine($"  ISBN     : {_isbn}");
             Console.WriteLine($"  Género   : {_genero}");
             Console.WriteLine($"  Copias   : {CopiasDisponibles}/{_ejemplares} disponibles");
@@ -112,7 +112,7 @@ namespace PracticaPOOBiblioteca
         }
 
         public string ResumenCorto() =>
-            $"{_titulo} — {_autor} ({_anio}) [{(Disponible ? "Disp." : "No disp.")}]";
+            $"{_titulo} — {_autor} ({_año}) [{(Disponible ? "Disp." : "No disp.")}]";
 
         private static string GenerarISBN()
         {

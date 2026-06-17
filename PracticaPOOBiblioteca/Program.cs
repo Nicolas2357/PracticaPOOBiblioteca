@@ -232,6 +232,7 @@ namespace PracticaPOOBiblioteca
 
         static void InicializarDatosDemostracion()
         {
+
             // Constructor 1 de Biblioteca (solo nombre)
             biblioteca = new Biblioteca("Biblioteca Virtual Cervantes");
 
@@ -275,6 +276,29 @@ namespace PracticaPOOBiblioteca
 
             Console.WriteLine("\n  Datos de demostración cargados. Presione Enter...");
             Console.ReadLine();
+
+            Console.WriteLine("\n=== DEMOSTRACIÓN SOBRECARGA ===");
+
+            var resultado1 = biblioteca.BuscarLibro("1984");
+
+            var resultado2 =
+                biblioteca.BuscarLibro(
+                    "Cien años de soledad",
+                    "Gabriel");
+
+            var resultado3 =
+                biblioteca.BuscarLibro(
+                    "978-0-451-52493-5",
+                    true);
+
+            Console.WriteLine(
+                $"Busqueda 1: {resultado1.Count} resultado(s)");
+
+            Console.WriteLine(
+                $"Busqueda 2: {resultado2.Count} resultado(s)");
+
+            Console.WriteLine(
+                $"Busqueda 3: {(resultado3 != null ? "Encontrado" : "No encontrado")}");
         }
 
         // ── Utilidad ───────────────────────────────────────────────────────
